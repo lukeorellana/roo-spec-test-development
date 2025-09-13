@@ -37,14 +37,4 @@ Acceptance checks (must pass):
 
 If shell access is unavailable, tell me exactly which commands to run for my OS instead of proceeding.
 
-Switch to Orchestrator mode in Roo.
-Initialize & interview: run /init-orchestrator. It will:
-Interview you in 3–4 rounds (vision/scope → current state → architecture → roadmap).
-Create/refresh .roo-orchestrator/Memory/Implementation_Plan.md and seed .roo-orchestrator/Memory/ entries.
-Build .roo-orchestrator/Memory/BACKLOG.md of ≤45-minute tasks with acceptance checks.
-If unknowns block progress, it will HANDOFF to Ask with top questions; if evidence is needed, HANDOFF to Code to run safe commands and paste outputs.
-Start the first tiny task: run /handoff-code, describe a ≤45m objective, files, commands, and acceptance tests.
-Code mode implements and returns a RESULT block with evidence.
-Orchestrator verifies evidence, updates .roo-orchestrator/Memory/ and .roo-orchestrator/Memory/BACKLOG.md, then /return-to-orchestrator to continue the loop.
-Repeat until done.
 ```
