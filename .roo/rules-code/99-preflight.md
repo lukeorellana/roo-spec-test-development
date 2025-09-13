@@ -12,11 +12,10 @@ and include the TODO template below.
   - Show a short diff; ask which to keep; update the file accordingly, then proceed.
 - Otherwise (no AC anywhere) → **BLOCKED** and show the template.
 
-## 2) Small Plan
-- The user must give a 3-line plan:
-  - **Files:** name 1–2 files to change.
-  - **Command:** one command to run (e.g., `npm run quickcheck` or `pytest -q`).
-  - **Artifact:** one file or result to produce.
+## 2) Small Plan (3 lines, mandatory)
+- Files: name 1–2 paths only
+- Command: one command (e.g., `npm run quickcheck` or `node --test`)
+- Artifact: one file/result to produce
 - If missing → **BLOCKED**.
 
 ## 3) Tests First

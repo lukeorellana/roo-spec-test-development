@@ -1,7 +1,6 @@
 # Slice Backlog Helper
-
-If the user didn't provide Acceptance Criteria:
-1) Open `docs/Slice-Backlog.md` (if present).
-2) Choose the first `[ ] TODO` slice that contains a ready block (AC + Plan).
-3) Propose that slice back to the user. If approved, proceed with tests-first and the plan.
-4) After completion, remind the user to mark it `[x] DONE` in `docs/Slice-Backlog.md`.
+If the user didn't paste AC:
+1) Open `docs/Slice-Backlog.md`.
+2) Pick the first `[ ] TODO` slice that includes a ready block (AC + Plan).
+3) Propose it back to the user. If approved, proceed tests-first with that plan.
+4) Remind the user to mark `[x] DONE` after completion.
