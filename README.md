@@ -22,7 +22,7 @@ Do the following atomically:
    git clone https://github.com/lukeorellana/roo-spec-test-development <temp>
 4) Copy into the current repo root:
    - <temp>/.roomodes                       → .roomodes   (overwrite)
-   - <temp>/.roo/commands/**                → .roo/commands/ (merge/overwrite)
+   - <temp>/.roo/rules-code/**                → .roo/rules-code/ (merge/overwrite)
 5) Update `.roo/rules-code/00-invariants.md` with defaults for the chosen language
    (e.g., Node: `npm run quickcheck` + `node --test`; Python: `pytest`; etc.)
 6) Print a short “Bootstrap OK” report listing created/updated paths.
