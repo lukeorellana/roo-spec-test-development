@@ -19,11 +19,10 @@ Do the following atomically:
    - Purpose: to update `.roo/rules-code/00-invariants.md` with language-specific commands and test tools.
    - If the user asks why, reply: "This sets rule invariants so the agent follows standards for your language."
 3) In a temp directory, run:
-   git clone https://github.com/lukeorellana/roo-orchestrator-framework <temp>
+   git clone https://github.com/lukeorellana/roo-spec-test-development <temp>
 4) Copy into the current repo root:
    - <temp>/.roomodes                       → .roomodes   (overwrite)
    - <temp>/.roo/commands/**                → .roo/commands/ (merge/overwrite)
-   - <temp>/.roo-orchestrator/**            → .roo-orchestrator/ (merge/overwrite)
 5) Update `.roo/rules-code/00-invariants.md` with defaults for the chosen language
    (e.g., Node: `npm run quickcheck` + `node --test`; Python: `pytest`; etc.)
 6) Print a short “Bootstrap OK” report listing created/updated paths.
