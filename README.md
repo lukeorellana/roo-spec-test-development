@@ -37,3 +37,20 @@ Acceptance checks (must pass):
 If shell access is unavailable, tell me exactly which commands to run for my OS instead of proceeding.
 
 ```
+
+## Slice-First (AC-only) Loop
+
+1) New chat → **📝 Slice Spec Writer**  
+   “Goal: <small thing>. **Activate** this slice. Command: `<one command>`.”  
+   → It appends a slice block to `docs/Acceptance-Criteria.md` and marks it `[>] ACTIVE`.
+
+2) Switch to **Code**  
+   Code mode selects the ACTIVE block → **tests-first** → minimal change → **one command** → paste **trimmed logs** into the slice’s **Evidence** → set `Status: [x] DONE`.
+
+3) **Archive**
+   Run **🗃️ AC Archivist** with the `/archive-slices` slash command.
+   → DONE blocks move to `docs/slice-log/YYYY-MM/YYYY-MM-DD.md`.
+
+4) Repeat (one new chat per slice).
+
+> Invariants: quick command (`npm run quickcheck`), tests-first, conventional commits. See `.roo/rules-code/00-invariants.md`.
