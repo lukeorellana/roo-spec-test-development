@@ -1,49 +1,64 @@
-# Preflight Gate — Code Mode must block if the slice is not ready
+# Preflight Gate — AC-only (single-file)
 
-You are the Code mode working in this repository. Before making changes,
-check these items. If any required item is missing, **stop and reply "BLOCKED"**
-and include the TODO template below.
+You are the Code mode working in this repository. Before changing files, enforce these checks.
+If a required item is missing, **reply "BLOCKED"** and include the TODO template.
 
-## 1) Acceptance Criteria (canonicalization)
-- If `docs/Acceptance-Criteria.md` exists: require a section for THIS slice (3–8 bullets).
-- If it does **not** exist but the user supplied AC in chat:
-  - Create `docs/Acceptance-Criteria.md` with a section for THIS slice and proceed.
-- If **both** exist but differ materially:
-  - Show a short diff; ask which to keep; update the file accordingly, then proceed.
-- Otherwise (no AC anywhere) → **BLOCKED** and show the template.
+## 1) Acceptance Criteria (canonical)
+Canonical source is `docs/Acceptance-Criteria.md` consisting of **slice blocks**:
+
+Required block shape:
+- Heading: `## slice: <kebab-or-title>`
+- Lines: `Status: [ ] TODO` (or `[>] ACTIVE` / `[~] IN-PROGRESS` / `[x] DONE`) and `Date: YYYY-MM-DD`
+- Sections:
+  - `### Acceptance Criteria` (3–8 bullets; unchecked)
+  - `### Plan` with exactly three lines:
+    - `- Files: <file1>, <file2>`
+    - `- Command: <one command>`
+    - `- Artifact: <one result>`
+
+### Target slice resolution (in order)
+1) If any block has `Status: [>] ACTIVE` → use the first such block.
+2) Else use the first block with `Status: [ ] TODO`.
+3) Else, if the user names a slice by slug/title in chat, use that block.
+4) Else → **BLOCKED**: ask the user to select a slice or create one via Slice Spec Writer.
+
+### Canonicalization
+- If AC/Plan appear in chat but the selected slice block is missing them → append into that block and proceed.
+- If both exist but **differ materially** → show a **short diff**; ask which to keep; update the block, then proceed.
+- If no AC anywhere → **BLOCKED** and print the slice template (below).
 
 ## 2) Small Plan (3 lines, mandatory)
 - Files: name 1–2 paths only
-- Command: one command (e.g., `npm run quickcheck` or `node --test`)
-- Artifact: one file/result to produce
-- If missing → **BLOCKED**.
+- Command: a single command (e.g., `npm run quickcheck`, `pytest -q`)
+- Artifact: one file/result
 
 ## 3) Tests First
-- If you touch code under common code paths (e.g., `src/`, `tools/`, `app/`), add/update tests **before** code.
-- If the change is docs-only, the user may declare **no-test-needed**.
+- If touching `src/` or `tools/`, add/update tests **before** code (docs-only may declare **no-test-needed**).
 
 ## 4) Evidence
-- Run the one command and show **trimmed logs** (errors summarized).
-- If it fails, fix or stop; do not proceed until green.
+- Run the single command; show **trimmed logs** (summarize errors). If red → fix or stop.
 
 ## When all checks pass
 1. Summarize the plan in **≤5 lines**.
 2. Add/adjust tests **first**.
-3. Make the **smallest** code change to satisfy the bullets.
+3. Make the **smallest** code change to satisfy AC.
 4. Run the command and show trimmed logs.
 5. Stop and wait for review (or commit to trunk if solo).
 
 ## TODO template (when BLOCKED)
 
-# Slice Title
-<one sentence>
+## slice: <kebab-or-title>
+Status: [ ] TODO
+Date: YYYY-MM-DD
 
-## Acceptance Criteria
+### Acceptance Criteria
 - [ ] Bullet 1
 - [ ] Bullet 2
 - [ ] Bullet 3
 
-## Plan (max 3 lines)
+### Plan
 - Files: <file1>, <file2>
-- Command: <one command to run>
-- Artifact: <result file/output>
+- Command: <one command>
+- Artifact: <result>
+
+### Evidence
